@@ -14,7 +14,7 @@ pipeline {
         stage("run"){
             steps{
                 sh 'java Main.java'
-                sh echo '${VERSION}'
+                echo '${VERSION}'
             }
         }
     }
