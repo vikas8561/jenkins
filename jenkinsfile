@@ -1,6 +1,10 @@
 pipeline {
 
     agent any
+
+    envirinment{
+        VERSION="1.0.2"
+    }
     stages {
         stage("compile"){
             steps{
@@ -10,7 +14,20 @@ pipeline {
         stage("run"){
             steps{
                 sh 'java Main.java'
+                sh echo '${VERSION}'
             }
+        }
+    }
+
+    post{
+        always {
+            sh 'echo "always"'
+        }
+        success {
+            sh 'echo "success"'
+        }
+        failure{
+            sh 'echo "failure"'
         }
     }
 }
